@@ -1,3 +1,40 @@
+
 .hidden {
   display: none;
 }
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+table, th, td {
+  border: 1px solid black;
+  text-align: center;
+}
+#ex td {
+  width: 33%;
+}
+
+div.padded {
+  margin: 15px;
+}
+table {
+  margin-top: 15px;
+}
+td {
+  padding: 15px;
+}
+
+html, div, table, textarea {
+  font-size: 18px;
+}
+textarea, button {
+ font-family: inherit;
+ font-size: inherit;
+}
+
+textarea {
+  height: 10em;
+  width: 10em;
+}
+
