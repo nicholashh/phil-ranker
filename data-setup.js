@@ -10,10 +10,13 @@ function ranking (school, score, rank, region) {
   this.MYrank = 0;
 }
 
-overall_rankings = ["us", "uk", "c", "a"];
-specialities = ["lang", "mind", "mph", "epist", "logic", "action", "reli"];
+specialities = ["17c", "18c", "19c", "20c", "action", "analytic", "ancient",
+    "art", "bio", "chinese", "cogsci", "epist", "ethics", "ethics-app",
+    "ethics-meta", "fem", "game", "kant", "lang", "law", "logic-math",
+    "logic-phil", "math", "medieval", "mind", "mph", "phys", "poli", "prag",
+    "race", "reli", "sci", "soci"];
 specialty_rankings = ["overall-all"].concat(specialities);
-
+overall_rankings = ["us", "uk", "c", "a"];
 rankings = [];
 
 $(document).ready( function() {
@@ -43,11 +46,15 @@ $(document).ready( function() {
                 rankings[i].world = rank;
                 break;
               } else {
-                // new_entry = {};
-                // score = $(this).find("td.column-2").html();
-                // new_entry[specialty] = score;
-                // rankings[i].specialities.push(new_entry);
                 score = $(this).find("td.column-2").html();
+                if ((specialty == "race") || (specialty == "prag") ||
+                    (specialty == "fem") || (specialty == "chinese") ) {
+                  if (score == 1) {
+                    score = 4.5;
+                  } else if (score == 2) {
+                    score = 4.0;
+                  }
+                }
                 rankings[i].specialities.push([specialty, score]);
                 break;
               }
@@ -87,7 +94,6 @@ $(document).ready( function() {
     }
   }
   do_one_ranking(0);
-
 });
 
 function results (id) {

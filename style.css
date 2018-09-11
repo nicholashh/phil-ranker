@@ -20,6 +20,7 @@ div.padded {
 }
 table {
   margin-top: 15px;
+  margin-bottom: 15px;
 }
 td {
   padding: 15px;
@@ -34,7 +35,16 @@ textarea, button {
 }
 
 textarea {
-  height: 10em;
   width: 10em;
+  height: 10em;
+}
+textarea.short {
+  height: 5em;
+}
+textarea.medium {
+  height: 10em;
+}
+textarea.tall {
+  height: 23em;
 }
 

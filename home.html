@@ -13,7 +13,7 @@
   </div>
   <div class="padded">
 
-    This website will help you create personalized rankings of philosophy phd programs in the English-speaking world. All the data comes from <a target="_blank" href="https://www.philosophicalgourmet.com/">The Philosophical Gourmet Report</a>. (I own none of this data!) All this website does is customize the rankings based on which program specializations are important <i>to you</i>.
+    This website will help you create personalized rankings of philosophy phd programs in the English-speaking world. All the data comes from <a target="_blank" href="https://www.philosophicalgourmet.com/">The Philosophical Gourmet Report</a>. (I own none of this data!) All this website does is customize the rankings based on which philosophical specializations are important <i>to you</i>.
 
   </div>
   <div id="examples" class="padded">
@@ -24,45 +24,71 @@
       <tr>
         <td>
 
-          Let's say I just want to see the un-customized rankings. (This will essentially reproduce the "Overall Rankings" section of tPGR.) <br/> <br/>
+          Let's say I just want to see the un-customized rankings. (This will essentially reproduce the "Overall Rankings" section of tPGR.)<br/><br/>
 
-<textarea id="1">
+<textarea id="1" class="short">
 us uk c a
 overall 1
-</textarea> <br/> <br/>
+</textarea><br/><br/>
 
-          This query says: "I would like to see all the rankings from the US, the UK, Canada, and Australia, and I only care about overall rankings." <br/> <br/>
+          This query says: "I would like to see all the rankings from the US, the UK, Canada, and Australia, and I only care about overall rankings."<br/><br/>
 
-          Press the button below to see the results. <br/> <br/>
+          Press the button below to see the results.<br/><br/>
 
           <button onclick="results(1)">Go!</button>
 
         </td>
         <td>
           
-          Let's say I only want to see results is the US, and I care mostly about programs that are strong in philosophy of language and really strong in philosophy of mind, but I also care a little bit about the overall ranking of the school. <br/> <br/>
+          Let's say I only want to see results is the US, and I care mostly about programs that are strong in philosophy of language and really strong in philosophy of mind, but I also care a little bit about the overall ranking of the school.<br/><br/>
 
-<textarea id="2">
+<textarea id="2" class="medium">
 us
-lang 1.0
-mind 1.5
-overall 0.5
-</textarea> <br/> <br/>
+lang 5
+mind 10
+overall 1
+</textarea><br/><br/>
 
-          This query uses the "lang", "mind", and "overall" keywords, which are hopefully self-explanatory. <br/> <br/>
+          This query (1) restricts the region, (2) introduces the "lang" and "mind" keywords, which are self-explanatory, and (3) demonstrates the ability to input variable preference weightings.<br/><br/>
 
           <button onclick="results(2)">Go!</button>
 
         </td>
-        <td>c</td>
+        <td>
+
+<textarea id="3" class="tall">
+us c
+mph 1.25
+overall 1.25
+mind 1
+action 1
+ethics-meta 1
+epist 0.75
+phys 0.75
+sci 0.75
+soci 0.75
+poli 0.75
+ethics-app 0.75
+ancient 0.5
+19c 0.5
+20c 0.5
+analytic 0.5
+kant -0.25
+lang -0.5</textarea><br/><br/>
+
+          (Hmmm, I wonder whose settings these are?)<br/><br/>
+
+          <button onclick="results(3)">Go!</button>
+
+        </td>
       </tr>
     </table>
   </div>
   <div id="results" class="padded hidden">
 
-    We are currently showing results for the following query: <br/> <br/>
+    We are currently showing results for the following query:<br/><br/>
 
-<textarea id="4"></textarea> <br/> <br/>
+    <textarea id="4"></textarea><br/><br/>
 
     <button onclick="results(4)">ReQuery</button>
 
@@ -77,11 +103,59 @@ overall 0.5
   </div>
   <div id="resultsError" class="padded hidden">
 
-    Oh no! The following errors occurred: <br/> <br/>
+    Oh no! The following errors occurred:<br/><br/>
 
-    <div id="errorMessage"">
+    <div id="errorMessage">
     </div>
 
   </div>
+  <div class="padded">
+
+    <br/> The algorithm used to calculate your custom rankings is just a double-weighed average (ie: weighted by the strength of a program among other programs in the same field and the strength of your preference for that field among your other preferences for other fields). This is straightforward math, but it is advantageous to be able to calculate many such averages across a large dataset at once.<br/><br/>
+
+    If you work for a while on finding the settings that you prefer, you might want to consider saving the configuration parameters in a text file somewhere!<br/><br/>
+
+    This site uses only the 2017-2018 rankings. (The rankings from 2014, 2009, 2006, and 2004 were ignored.)<br/><br/>
+
+    The following specialty options are available:
+    <ul>
+      <li><i>17c</i> -- Early Modern: 17th Century</li>
+      <li><i>18c</i> -- Early Modern: 18th Century</li>
+      <li><i>19c</i> -- 19th Century Continental</li>
+      <li><i>20c</i> -- 20th Century Continental</li>
+      <li><i>action</i> -- Philosophy Of Action</li>
+      <li><i>analytic</i> -- History Of Analytic</li>
+      <li><i>ancient</i> -- Ancient Philosophy</li>
+      <li><i>art</i> -- Philosophy Of Art</li>
+      <li><i>bio</i> -- Philosophy Of Biology</li>
+      <li><i>chinese</i> -- Chinese Philosophy (SCORES APPROXIMATE)</li>
+      <li><i>cogsci</i> -- Philosophy Of Cognitive Science</li>
+      <li><i>epist</i> -- Epistemology</li>
+      <li><i>ethics</i> -- Normative Ethics</li>
+      <li><i>ethics-app</i> -- Applied Ethics</li>
+      <li><i>ethics-meta</i> -- Metaethics & Moral Psychology</li>
+      <li><i>fem</i> -- Feminist Philosophy (SCORES APPROXIMATE)</li>
+      <li><i>game</i> -- Decision, Rational Choice, & Game Theory</li>
+      <li><i>kant</i> -- Kant</li>
+      <li><i>lang</i> -- Philosophy Of Language</li>
+      <li><i>law</i> -- Philosophy Of Law</li>
+      <li><i>logic-math</i> -- Mathematical Logic</li>
+      <li><i>logic-phil</i> -- Philosophical Logic</li>
+      <li><i>math</i> -- Philosophy Of Mathematics</li>
+      <li><i>medieval</i> -- Medieval Philosophy</li>
+      <li><i>mind</i> -- Philosophy Of Mind</li>
+      <li><i>mph</i> -- Metaphysics</li>
+      <li><i>phys</i> -- Philosophy Of Physics</li>
+      <li><i>poli</i> -- Political Philosophy</li>
+      <li><i>prag</i> -- American Pragmatism (SCORES APPROXIMATE)</li>
+      <li><i>race</i> -- Philosophy Of Race (SCORES APPROXIMATE)</li>
+      <li><i>reli</i> -- Philosophy Of Religion</li>
+      <li><i>sci</i> -- General Philosophy Of Science</li>
+      <li><i>soci</i> -- Philosophy Of Social Sciences</li>
+    </ul>
+    For more information, you can contact me at <a target="_blank" href="http://www.nicholashh.com">www.nicholashh.com</a>.<br/><br/>
+  </div>
 </body>
+
+
 
