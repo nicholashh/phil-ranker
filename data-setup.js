@@ -66,7 +66,7 @@ $(document).ready( function() {
         do_one_specialty(i+1);
       });
     } else {
-      console.log(rankings);
+      // console.log(rankings);
     }
   }
 
@@ -194,6 +194,10 @@ function results (id) {
       return b.MYscore - a.MYscore;
     });
 
+    // scale the personalized rankings (relative to the "perfect" (NYU) 4.9)
+    max = new_rankings[0].MYscore;
+    normalization_ratio = 1.0 / max * 4.9;
+
     rank = 1;
     offset = 0;
     for (i = 0; i < new_rankings.length; i++) {
@@ -207,7 +211,9 @@ function results (id) {
           offset++;
         }
       }
-      new_rankings[i].MYscore /= factor;
+      // i'm not sure what this "factor" was originally intended to do
+      // new_rankings[i].MYscore /= factor;
+      new_rankings[i].MYscore *= normalization_ratio;
     }
 
   }
